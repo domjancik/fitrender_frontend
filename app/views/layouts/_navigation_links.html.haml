@@ -1,0 +1,7 @@
+=# add navigation links to this file
+- if user_signed_in?
+  %li= link_to 'Sign out', signout_path
+  %li= link_to 'Scenes', scenes_path
+  %li= link_to 'Nodes', nodes_path
+- else
+  %li= link_to 'Sign in', signin_path
