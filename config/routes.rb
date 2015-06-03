@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  resources :scenes
   resources :users
+  resources :nodes, only: [:show, :index], constraints: { id: /[^\/]+/ }, format: false
   root to: 'visitors#index'
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin

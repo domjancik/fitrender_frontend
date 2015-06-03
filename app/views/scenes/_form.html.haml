@@ -1,0 +1,11 @@
+= simple_form_for(@scene) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :id_remote
+    = f.association :user
+    = f.file_field :scene_file
+
+  .form-actions
+    = f.button :submit

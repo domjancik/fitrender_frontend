@@ -1,0 +1,10 @@
+- content_for :title do
+  Nodes
+
+%h1=yield(:title)
+.row
+  %ul.small-block-grid-2.medium-block-grid-4
+    - @nodes.each do |node|
+      %li
+        =link_to node.id, node
+

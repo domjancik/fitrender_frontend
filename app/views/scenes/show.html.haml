@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @scene.title
+%p
+  %b Id remote:
+  = @scene.id_remote
+%p
+  %b User:
+  = @scene.user
+
+= link_to 'Edit', edit_scene_path(@scene)
+\|
+= link_to 'Back', scenes_path

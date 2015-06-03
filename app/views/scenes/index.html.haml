@@ -1,0 +1,25 @@
+%h1 Listing scenes
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Id remote
+      %th User
+      %th
+      %th
+      %th
+
+  %tbody
+    - @scenes.each do |scene|
+      %tr
+        %td= scene.title
+        %td= scene.id_remote
+        %td= scene.user
+        %td= link_to 'Show', scene
+        %td= link_to 'Edit', edit_scene_path(scene)
+        %td= link_to 'Destroy', scene, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Scene', new_scene_path

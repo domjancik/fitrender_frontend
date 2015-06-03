@@ -1,0 +1,18 @@
+- content_for :title do
+  Node
+  =@node.id
+
+%h1= yield :title
+
+%table{ role: 'grid' }
+  %thead
+    %tr
+      %th Attribute
+      %th Value
+  %tbody
+    - @node.attributes.each_pair do |key, value|
+      %tr
+        %td= key
+        %td= truncate(value, length: 60)
+
+= link_to 'Back', nodes_path
