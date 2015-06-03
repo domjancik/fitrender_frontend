@@ -5,10 +5,13 @@
 .row
   %ul.small-block-grid-2.medium-block-grid-4
     - @nodes.each do |node|
-      %li.text-center
-        .row
-          - state_class = "state-#{node.state}"
-          .icon{ class: state_class }
-        .row
-          =link_to node.id, node
+      %li.text-center.grid__item
+        = link_to node do
+          .row
+            .small-12.columns
+              - state_class = "state-#{node.state}"
+              .icon{ class: state_class }
+          .row
+            .small-12.columns
+              = node.id
 

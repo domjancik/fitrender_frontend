@@ -21,6 +21,10 @@ $color-state-idle: $secondary-color;
 $color-state-working: $primary-color;
 $color-state-other: $alert-color;
 
+@mixin animate {
+  transition: all 200ms;
+}
+
 .full {
   width: 100%;
 }
@@ -31,6 +35,7 @@ $color-state-other: $alert-color;
   background-color: white;
   border-radius: 100%;
   display: inline-block;
+  border: rem_calc(3) $body-bg solid;
 
   &.state- {
     &idle {
@@ -46,6 +51,20 @@ $color-state-other: $alert-color;
 
     &other {
       background-color: $color-state-other;
+    }
+  }
+}
+
+.grid {
+  &__item {
+    a>div {
+      @include animate;
+      padding: 0.5rem;
+    }
+
+    a:hover>div {
+      background-color: $primary-color;
+      @include animate;
     }
   }
 }
