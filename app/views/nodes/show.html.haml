@@ -4,15 +4,15 @@
 
 %h1= yield :title
 
-%table{ role: 'grid' }
+%table.full{ role: 'grid' }
   %thead
     %tr
-      %th Attribute
+      %th{ width: 100 } Attribute
       %th Value
   %tbody
     - @node.attributes.each_pair do |key, value|
       %tr
-        %td= key
-        %td= truncate(value, length: 60)
+        %td= truncate(value, length: 40)
+        %td= truncate(value, length: 70)
 
 = link_to 'Back', nodes_path

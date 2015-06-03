@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
-    %title= content_for?(:title) ? yield(:title) : 'Fitrender Frontend'
+    %title= content_for?(:title) ? "FITRender | #{yield(:title)}" : 'FITRender'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Fitrender Frontend'}"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     -# Modernizr is required for Zurb Foundation
@@ -14,7 +14,7 @@
       = render 'layouts/navigation'
     %main{:role => "main"}
       .row
-        .small-12.large-6.columns
+        .small-12.columns
           .row
             = render 'layouts/messages'
             = yield

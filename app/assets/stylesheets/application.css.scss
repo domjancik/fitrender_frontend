@@ -13,3 +13,39 @@
  *= require_tree .
  *= require_self
  */
+
+@import "animate";
+@import "settings";
+
+$color-state-idle: $secondary-color;
+$color-state-working: $primary-color;
+$color-state-other: $alert-color;
+
+.full {
+  width: 100%;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  background-color: white;
+  border-radius: 100%;
+  display: inline-block;
+
+  &.state- {
+    &idle {
+      background-color: $color-state-idle;
+    }
+
+    &working {
+      background-color: $color-state-working;
+      @extend .animated;
+      @extend .pulse;
+      @extend .infinite;
+    }
+
+    &other {
+      background-color: $color-state-other;
+    }
+  }
+}
