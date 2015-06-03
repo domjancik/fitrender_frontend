@@ -7,7 +7,8 @@
     - @nodes.each do |node|
       %li.text-center
         .row
-          .icon.state-working
+          - state_class = "state-#{node.state}"
+          .icon{ class: state_class }
         .row
           =link_to node.id, node
 

@@ -12,7 +12,7 @@
   %tbody
     - @node.attributes.each_pair do |key, value|
       %tr
-        %td= truncate(value, length: 40)
+        %td= truncate(key, length: 30)
         %td= truncate(value, length: 70)
 
 = link_to 'Back', nodes_path
