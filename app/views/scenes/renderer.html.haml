@@ -1,6 +1,18 @@
+- content_for :title do
+  = t 'scene.renderer_selection.title'
+
+%h1=yield(:title)
+
 %p= t 'scene.renderer_selection.text'
 
-- @renderers.each do |renderer|
-  = link_to new_scene_path(renderer: renderer.name) do
-    = image_tag "icons/renderers/#{renderer.name}", class: %w(icon medium)
-    = renderer.name
+%ul.small-block-grid-3.medium-block-grid-6
+  - @renderers.each do |renderer|
+    %li.grid__item
+      = link_to new_scene_path(renderer: renderer.name) do
+        .row
+          .small-4.columns
+            .row
+              = image_tag "icons/renderers/#{renderer.name}.png", class: %w(icon medium)
+          .small-8.columns.text-right
+            .row
+              = renderer.name

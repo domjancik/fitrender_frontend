@@ -16,6 +16,7 @@
 
 @import "animate";
 @import "settings";
+@import "mixins";
 
 $color-state-idle: $secondary-color;
 $color-state-busy: $primary-color;
@@ -30,11 +31,6 @@ $color-state-other: $alert-color;
 }
 
 img.icon {
-  padding: rem-calc(6);
-  @include animate;
-}
-
-a:hover img.icon {
   padding: rem-calc(4);
   @include animate;
 }
@@ -72,9 +68,13 @@ a:hover img.icon {
 
 .grid {
   &__item {
+    padding: rem-calc(20) !important;
+
     a>div {
       @include animate;
       padding: 0.5rem;
+      background: $white;
+      @include box-shadow(0, rem-calc(4), rem-calc(8), rgba(0,0,0,0.1));
     }
 
     a:hover>div {
