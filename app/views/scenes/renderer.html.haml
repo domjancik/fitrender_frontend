@@ -1,4 +1,6 @@
 %p= t 'scene.renderer_selection.text'
 
 - @renderers.each do |renderer|
-  = link_to renderer.name, new_scene_path(renderer: renderer.name)
+  = link_to new_scene_path(renderer: renderer.name) do
+    = image_tag "icons/renderers/#{renderer.name}", class: %w(icon medium)
+    = renderer.name
