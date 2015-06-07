@@ -24,6 +24,16 @@ class Renderer < Fitrender::Adaptor::Renderer
     from_hash get("renderers/#{id}")
   end
 
+  def self.valid(id)
+    return false unless id
+    begin
+      self.find id
+      true
+    rescue
+      false
+    end
+  end
+
   def to_s
     id
   end

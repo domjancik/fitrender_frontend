@@ -20,7 +20,7 @@ class ScenesController < ApplicationController
 
   # GET /scenes/new
   def new
-    redirect_to renderer_new_scene_url unless params[:renderer]
+    redirect_to renderer_new_scene_url unless Renderer.valid(params[:renderer])
     @scene = Scene.new
   end
 
