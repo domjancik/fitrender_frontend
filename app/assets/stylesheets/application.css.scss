@@ -18,7 +18,7 @@
 @import "settings";
 
 $color-state-idle: $secondary-color;
-$color-state-working: $primary-color;
+$color-state-busy: $primary-color;
 $color-state-other: $alert-color;
 
 @mixin animate {
@@ -42,8 +42,8 @@ $color-state-other: $alert-color;
       background-color: $color-state-idle;
     }
 
-    &working {
-      background-color: $color-state-working;
+    &busy {
+      background-color: $color-state-busy;
       @extend .animated;
       @extend .pulse;
       @extend .infinite;
