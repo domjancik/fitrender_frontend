@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :scenes
+  resources :scenes do
+    get 'renderer', on: :new
+  end
   resources :users
   resources :nodes, only: [:show, :index], constraints: { id: /[^\/]+/ }, format: false
   root to: 'visitors#index'

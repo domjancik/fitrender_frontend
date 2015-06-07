@@ -12,8 +12,15 @@ class ScenesController < ApplicationController
   def show
   end
 
+  # GET /scenes/renderer
+  # Select renderer for a new scene
+  def renderer
+    @renderers = Renderer.all
+  end
+
   # GET /scenes/new
   def new
+    redirect_to renderer_new_scene_url unless params[:renderer]
     @scene = Scene.new
   end
 
