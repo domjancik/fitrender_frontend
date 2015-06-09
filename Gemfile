@@ -24,6 +24,7 @@ gem 'fitrender_common', git: '/mnt/hgfs/DiplImpl/modules/fitrender_common', bran
 gem 'therubyracer', :platform=>:ruby
 group :development do
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'html2haml'
   gem 'quiet_assets'
   gem 'rails_layout'
