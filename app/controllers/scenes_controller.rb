@@ -20,8 +20,11 @@ class ScenesController < ApplicationController
 
   # GET /scenes/new
   def new
-    redirect_to renderer_new_scene_url unless Renderer.valid(params[:renderer])
-    @scene = Scene.new
+    if params[:renderer] && Renderer.valid(params[:renderer])
+      @scene = Scene.new(renderer_id: params[:renderer])
+    else
+      redirect_to renderer_new_scene_url
+    end
   end
 
   # GET /scenes/1/edit
@@ -76,6 +79,6 @@ class ScenesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scene_params
-      params.require(:scene).permit(:title, :id_remote, :user_id, :scene_file)
+      params.require(:scene).permit(:title, :id_remote, :user_id, :scene_file, :renderer_id)
     end
 end

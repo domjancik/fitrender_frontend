@@ -1,11 +1,27 @@
+- renderer = @scene.renderer
+
 = simple_form_for(@scene) do |f|
   = f.error_notification
 
   .form-inputs
+    = f.hidden_field :renderer_id
     = f.input :title
     = f.input :id_remote
     = f.association :user
     = f.file_field :scene_file
+
+    %h2= t 'scene.new.options'
+
+    %p
+      Renderer:
+      %strong=renderer.name
+
+    %ul.small-block-grid-1.medium-block-grid-3
+      - renderer.generator_options.each do |option|
+        %li.grid__item
+          -#.row
+          - input_id = "option_#{option.name}".to_sym
+          = f.input input_id, hint: option.description, label: option.name.humanize
 
   .form-actions
     = f.button :submit

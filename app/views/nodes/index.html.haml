@@ -7,11 +7,12 @@
     - @nodes.each do |node|
       %li.text-center.grid__item
         = link_to node do
-          .row
-            .small-12.columns
-              - state_class = "state-#{node.state}"
-              .icon{ class: state_class }
-          .row
-            .small-12.columns
-              = node.id
+          %div
+            .row
+              .small-12.columns
+                - state_class = "state-#{node.state}"
+                .icon{ class: state_class }
+            .row
+              .small-12.columns
+                = node.id
 

@@ -24,6 +24,10 @@ class Renderer < Fitrender::Adaptor::Renderer
     from_hash get("renderers/#{id}")
   end
 
+  def name
+    self.id
+  end
+
   def self.valid(id)
     return false unless id
     begin

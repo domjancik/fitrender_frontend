@@ -3,3 +3,6 @@ en:
     renderer_selection:
       title: Choose a renderer
       text: Select the renderer you want to upload a scene for
+    new:
+      title: New scene
+      options: Render setup

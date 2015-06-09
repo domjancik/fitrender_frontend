@@ -68,16 +68,16 @@ img.icon {
 
 .grid {
   &__item {
-    padding: rem-calc(20) !important;
 
-    a>div {
+    &>a>div, &>div {
+      padding: rem-calc(10) !important;
       @include animate;
-      padding: 0.5rem;
+      //padding: 0.5rem;
       background: $white;
       @include box-shadow(0, rem-calc(4), rem-calc(8), rgba(0,0,0,0.1));
     }
 
-    a:hover>div {
+    &>a:hover>div {
       background-color: $primary-color;
       @include animate;
     }
