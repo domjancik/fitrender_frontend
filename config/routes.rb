@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :scenes do
     get 'renderer', on: :new
+    resources :jobs, shallow: true
   end
   resources :users
   resources :nodes, only: [:show, :index], constraints: { id: /[^\/]+/ }, format: false

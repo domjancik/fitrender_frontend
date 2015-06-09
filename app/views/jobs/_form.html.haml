@@ -1,0 +1,11 @@
+= simple_form_for(@job) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :id_remote
+    = f.input :state
+    = f.input :result_path
+    = f.input :scene
+
+  .form-actions
+    = f.button :submit

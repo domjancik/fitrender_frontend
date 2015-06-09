@@ -1,5 +1,6 @@
 class Scene < ActiveRecord::Base
   belongs_to :user
+  has_many :jobs
 
   validates :title, presence: true
   validates :user, presence: true

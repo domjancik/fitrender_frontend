@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Id remote:
+  = @job.id_remote
+%p
+  %b State:
+  = @job.state
+
+= link_to 'Edit', edit_job_path(@job)
+\|
+= link_to 'Back', jobs_path
