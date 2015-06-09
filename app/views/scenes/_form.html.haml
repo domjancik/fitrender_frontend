@@ -1,13 +1,19 @@
 - renderer = @scene.renderer
 
-= simple_form_for(@scene) do |f|
+= simple_form_for(@scene, :html => {:multipart => true }) do |f|
   = f.error_notification
 
   .form-inputs
     = f.hidden_field :renderer_id
-    = f.input :title
-    = f.association :user
-    = f.file_field :scene_file
+
+    %ul.small-block-grid-1.medium-block-grid-2
+      %li.grid__item= f.input :title
+      %li.grid__item
+        %div
+          %label{for: 'scene_file'}= "* #{'scene_file'.humanize}"
+          = f.file_field :scene_file
+          - if @file_missing
+            %small.error= t 'scene.new.file_missing'
 
     %h2= t 'scene.new.options'
 
@@ -15,12 +21,11 @@
       Renderer:
       %strong=renderer.name
 
-    %ul.small-block-grid-1.medium-block-grid-3
+    %ul.small-block-grid-1.medium-block-grid-2.large-block-grid-3
       - renderer.generator_options.each do |option|
         %li.grid__item
-          -#.row
-          - input_id = "option_#{option.name}".to_sym
-          = f.input input_id, hint: option.description, label: option.name.humanize
+          - input_id = "option_#{option.id}".to_sym
+          = f.input input_id, hint: option.description, label: option.id.humanize
 
   .form-actions
     = f.button :submit

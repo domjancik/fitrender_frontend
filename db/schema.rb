@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609105053) do
+ActiveRecord::Schema.define(version: 20150609114812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150609105053) do
     t.datetime "updated_at",               null: false
     t.string   "renderer_id"
     t.json     "options",     default: {}
+    t.string   "scene_path"
   end
 
   add_index "scenes", ["user_id"], name: "index_scenes_on_user_id", using: :btree

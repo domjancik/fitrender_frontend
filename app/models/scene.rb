@@ -4,13 +4,14 @@ class Scene < ActiveRecord::Base
 
   validates :title, presence: true
   validates :user, presence: true
+  validates :scene_path, presence: true
 
   def method_missing(name, *args)
     match = /^option_(\w+)$/.match name
     return get_option(match[1]) if match
 
     match = /^option_(\w+)=$/.match name
-    return options[match[1]] = args[0]
+    return options[match[1]] = args[0] if match
 
     super
   end

@@ -6,3 +6,4 @@ en:
     new:
       title: New scene
       options: Render setup
+      file_missing: The scene file is missing

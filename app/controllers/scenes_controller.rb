@@ -1,6 +1,8 @@
 class ScenesController < ApplicationController
   before_action :set_scene, only: [:show, :edit, :update, :destroy]
 
+  # TODO reduce renderer lookups
+
   # GET /scenes
   # GET /scenes.json
   def index
@@ -35,6 +37,14 @@ class ScenesController < ApplicationController
   # POST /scenes.json
   def create
     @scene = Scene.new(scene_params)
+    @scene.user = current_user
+    begin
+      scene_path = process_scene_file(scene_file_param)
+      @scene.scene_path = scene_path
+    rescue ActionController::ParameterMissing
+      @file_missing = true
+    end
+    # TODO submit jobs
 
     respond_to do |format|
       if @scene.save
@@ -79,6 +89,39 @@ class ScenesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scene_params
-      params.require(:scene).permit(:title, :id_remote, :user_id, :scene_file, :renderer_id)
+      params.require(:scene).permit(*allowed_params(renderer_id_param))
+    end
+
+    def renderer_id_param
+      params.require(:scene).require(:renderer_id)
+    end
+
+    def allowed_params(renderer_id)
+      param_names = [ :title, :user_id, :renderer_id ]
+      renderer = Renderer.find(renderer_id)
+      renderer.generator_options.each do |option|
+        param_names << "option_#{option.id}"
+      end
+      param_names
+    end
+
+    def scene_file_param
+      params.require(:scene).require(:scene_file)
+    end
+
+    # Save the given file io to a secrets specified location, timestamp it and return the file path
+    # @return [String] the full path to the saved scene file
+    def process_scene_file(file_io)
+      target_filename = scene_target_filename file_io.original_filename
+      puts 'Opening file'
+      File.open(target_filename, 'wb') do |file|
+        file.write(file_io.read)
+      end
+      target_filename
+    end
+
+    def scene_target_filename(filename)
+      stripped_filename = I18n.transliterate(filename).gsub(/[^0-9A-Za-z_.]/, '').downcase
+      "#{Rails.application.secrets.fitrender_scenes_location}/#{Time.now.to_i}_#{stripped_filename}"
     end
 end

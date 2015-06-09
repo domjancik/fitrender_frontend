@@ -4,11 +4,15 @@
   %b Title:
   = @scene.title
 %p
-  %b Id remote:
-  = @scene.id_remote
-%p
   %b User:
   = @scene.user
+%p
+  %b Path:
+  = @scene.scene_path
+
+%p
+  %b Options:
+  = @scene.options
 
 = link_to 'Edit', edit_scene_path(@scene)
 \|
