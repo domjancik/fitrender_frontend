@@ -4,7 +4,6 @@
   %thead
     %tr
       %th Title
-      %th Id remote
       %th User
       %th
       %th
@@ -14,7 +13,6 @@
     - @scenes.each do |scene|
       %tr
         %td= scene.title
-        %td= scene.id_remote
         %td= scene.user
         %td= link_to 'Show', scene
         %td= link_to 'Edit', edit_scene_path(scene)
