@@ -22,6 +22,7 @@ gem 'simple_form'
 gem 'rest-client'
 gem 'fitrender_common', git: '/mnt/hgfs/DiplImpl/modules/fitrender_common', branch: 'master'
 gem 'therubyracer', :platform=>:ruby
+gem 'paperclip', '~> 4.2'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

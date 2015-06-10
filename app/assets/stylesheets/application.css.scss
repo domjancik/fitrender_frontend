@@ -20,7 +20,9 @@
 
 $color-state-idle: $secondary-color;
 $color-state-busy: $primary-color;
-$color-state-other: $alert-color;
+$color-state-other: $white-smoke;
+$color-state-failed: $alert-color;
+$color-state-completed: green;
 
 @mixin animate {
   transition: all 200ms;
@@ -53,7 +55,7 @@ img.icon {
       background-color: $color-state-idle;
     }
 
-    &busy {
+    &busy, &running {
       background-color: $color-state-busy;
       @extend .animated;
       @extend .pulse;
@@ -62,6 +64,14 @@ img.icon {
 
     &other {
       background-color: $color-state-other;
+    }
+
+    &failed {
+      background-color: $color-state-failed;
+    }
+
+    &completed {
+      background-color: $color-state-completed;
     }
   }
 }

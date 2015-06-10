@@ -1,18 +1,28 @@
-%p#notice= notice
-
-%p
-  %b Title:
+- content_for :title do
   = @scene.title
-%p
-  %b User:
-  = @scene.user
-%p
-  %b Path:
-  = @scene.scene_path
+
+%h1=yield(:title)
 
 %p
   %b Options:
   = @scene.options
+
+.row
+  %ul.small-block-grid-2.medium-block-grid-4
+    - @scene.jobs.each do |job|
+      %li.text-center.grid__item
+        %div
+          .row
+            .small-12.columns
+              - state_class = "state-#{job.state}"
+              .icon{ class: state_class }
+          .row
+            .small-12.columns
+          - unless job.result.blank?
+            .row
+              .small-12.columns
+                = link_to job.result.url(:original), target: :blank do
+                  = image_tag(job.result.url(:medium))
 
 = link_to 'Edit', edit_scene_path(@scene)
 \|

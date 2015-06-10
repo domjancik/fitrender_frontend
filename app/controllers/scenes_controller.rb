@@ -12,6 +12,7 @@ class ScenesController < ApplicationController
   # GET /scenes/1
   # GET /scenes/1.json
   def show
+    @scene.jobs.each { |job| job.update_state } # TODO do in a regular rake task
   end
 
   # GET /scenes/renderer
