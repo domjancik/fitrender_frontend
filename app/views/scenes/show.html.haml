@@ -14,13 +14,10 @@
         %div
           .row
             .small-12.columns
-              - state_class = "state-#{job.state}"
-              .icon{ class: state_class }
-          .row
-            .small-12.columns
-          - unless job.result.blank?
-            .row
-              .small-12.columns
+              - if job.result.blank?
+                - state_class = "state-#{job.state}"
+                .icon{ class: state_class }
+              - else
                 = link_to job.result.url(:original), target: :blank do
                   = image_tag(job.result.url(:medium))
 
