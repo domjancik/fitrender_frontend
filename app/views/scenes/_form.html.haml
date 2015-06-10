@@ -17,11 +17,12 @@
 
     %h2= t 'scene.new.options'
 
-    %p
-      Renderer:
-      %strong=renderer.name
-
     %ul.small-block-grid-1.medium-block-grid-2.large-block-grid-3
+      %li.grid__item
+        %div
+          %label Renderer
+          %p
+            %strong=renderer.name
       - renderer.generator_options.each do |option|
         %li.grid__item
           - input_id = "option_#{option.id}".to_sym

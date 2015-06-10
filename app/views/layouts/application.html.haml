@@ -5,6 +5,7 @@
     %title= content_for?(:title) ? "FITRender | #{yield(:title)}" : 'FITRender'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Fitrender Frontend'}"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    %link{href:'http://fonts.googleapis.com/css?family=Lato:400,900,400italic,900italic&subset=latin,latin-ext', rel: 'stylesheet', type: 'text/css'}
     -# Modernizr is required for Zurb Foundation
     = javascript_include_tag 'vendor/modernizr'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
