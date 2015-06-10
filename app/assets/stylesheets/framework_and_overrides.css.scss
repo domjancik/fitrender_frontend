@@ -1,6 +1,7 @@
 // import the CSS framework
 @import "settings";
 @import "foundation";
+@import "mixins";
 
 form .hint {
   font-size: 75%;
@@ -110,4 +111,11 @@ h1, h2, h3, h4, h5, h6 {
 
 h2, h3, h4, h5, h6 {
   color: $quaternary-color;
+}
+
+.alert-box {
+  position: fixed;
+  left: 0;
+  top: rem-calc(80);
+  @include box-shadow-basic;
 }

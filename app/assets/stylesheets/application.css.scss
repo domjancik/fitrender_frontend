@@ -84,7 +84,7 @@ img.icon {
       @include animate;
       //padding: 0.5rem;
       background: $white;
-      @include box-shadow(0, rem-calc(4), rem-calc(8), rgba(0,0,0,0.1));
+      @include box-shadow-basic;
     }
 
     &>a:hover>div {

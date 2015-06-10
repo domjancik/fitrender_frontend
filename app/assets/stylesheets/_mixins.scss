@@ -3,3 +3,7 @@
   -moz-box-shadow: $hoff $voff $blur $color;
   box-shadow: $hoff $voff $blur $color;
 }
+
+@mixin box-shadow-basic {
+  @include box-shadow(0, rem-calc(4), rem-calc(8), rgba(0,0,0,0.1));
+}
