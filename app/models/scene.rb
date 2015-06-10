@@ -1,4 +1,8 @@
+require 'json'
+
 class Scene < ActiveRecord::Base
+  include Adaptorable
+
   belongs_to :user
   has_many :jobs
 
@@ -18,6 +22,13 @@ class Scene < ActiveRecord::Base
 
   def renderer
     Renderer.find(renderer_id)
+  end
+
+  def submit
+    job_list = post 'submit', path: scene_path, renderer_id: renderer_id, options: JSON.dump(options)
+    job_list.each do |job|
+      jobs.build(id_remote: job['id'], result_path: job['path'])
+    end
   end
 
   protected

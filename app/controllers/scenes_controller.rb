@@ -44,7 +44,7 @@ class ScenesController < ApplicationController
     rescue ActionController::ParameterMissing
       @file_missing = true
     end
-    # TODO submit jobs
+    @scene.submit
 
     respond_to do |format|
       if @scene.save

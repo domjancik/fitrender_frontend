@@ -1,6 +1,6 @@
 GIT
   remote: /mnt/hgfs/DiplImpl/modules/fitrender_common
-  revision: eecf2a5538ca6a868036abac5abd78f8fae5dfef
+  revision: 7d82c3bf95b76781a26000ed0fb1db7e752d5fa4
   branch: master
   specs:
     fitrender_common (0.1.0)
