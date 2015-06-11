@@ -20,7 +20,7 @@ gem 'pg'
 gem 'pundit'
 gem 'simple_form'
 gem 'rest-client'
-gem 'fitrender_common', git: '/mnt/hgfs/DiplImpl/modules/fitrender_common', branch: 'master'
+gem 'fitrender_common', git: 'git@gitlab.fit.cvut.cz:jancidom/fitrender_frontend.git', branch: 'master'
 gem 'therubyracer', :platform=>:ruby
 gem 'paperclip', '~> 4.2'
 group :development do
