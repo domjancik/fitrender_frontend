@@ -25,11 +25,17 @@
             %div
               .row
                 .small-12.columns
+                  = job.name
+              .row
+                .small-12.columns
                   - state_class = "state-#{job.state}"
                   .icon{ class: state_class }
           - else
             = link_to job.result.url(:original), target: :blank do
               %div
+                .row
+                  .small-12.columns
+                    = job.name
                 .row
                   .small-12.columns
                     = image_tag(job.result.url(:medium))

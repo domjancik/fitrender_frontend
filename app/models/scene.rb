@@ -27,7 +27,7 @@ class Scene < ActiveRecord::Base
   def submit
     job_list = post 'submit', path: scene_path, renderer_id: renderer_id, options: JSON.dump(options)
     job_list.each do |job|
-      jobs.build(id_remote: job['id'], result_path: job['path'])
+      jobs.build(id_remote: job['id'], result_path: job['path'], name: job['name'])
     end
   end
 
