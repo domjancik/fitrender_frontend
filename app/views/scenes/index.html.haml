@@ -1,27 +1,34 @@
 %h1 Listing scenes
 
-%table
+%table{width: '100%'}
   %thead
     %tr
+      %th{width: 70}
       %th Title
-      %th User
-      %th{width: 150}
-      %th
-      %th
-      %th
+      -# TODO show user for admin
+      -#%th User
+      %th{width: 300}
+      -#%th
+      -#%th
+      -#%th
 
   %tbody
     - @scenes.each do |scene|
-      %tr
-        %td= scene.title
-        %td= scene.user
-        %td
-          .progress
+      = link_to scene do
+        %tr
+          %td
+            - unless scene.result.blank?
+              = image_tag scene.result.url(:thumb)
+          %td= link_to scene.title, scene
+          -#%td= scene.user.name
+          %td
             - completed_percent = scene.amount_done * 100
-            %span.meter{style: "width: #{completed_percent}%"}
-        %td= link_to 'Show', scene
-        %td= link_to 'Edit', edit_scene_path(scene)
-        %td= link_to 'Destroy', scene, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            - extra_classes = completed_percent == 100 ? 'success' : ''
+            .progress{class: extra_classes}
+              %span.meter{style: "width: #{completed_percent}%"}
+          -#%td= link_to 'Show', scene
+          -#%td= link_to 'Edit', edit_scene_path(scene)
+          -#%td= link_to 'Destroy', scene, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

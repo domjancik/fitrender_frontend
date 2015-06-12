@@ -35,11 +35,17 @@ class Scene < ActiveRecord::Base
   # @return [Fixnum] 0-1 representing percentage of jobs done
   def amount_done
     # TODO Do in SQL
-    return 1 if jobs.count == 0
+    return 1 if jobs.empty?
     num_completed = jobs.find_all { |job| job.completed? }.count
     puts num_completed
     puts jobs.count
     num_completed.to_f / jobs.count
+  end
+
+  # For listing previews
+  def result
+    return nil if jobs.empty?
+    jobs[0].result
   end
 
   protected
