@@ -1,0 +1,17 @@
+- content_for :title do
+  = t 'option.title'
+
+%h1=yield(:title)
+
+%ul.small-block-grid-1.medium-block-grid-2.large-block-grid-3
+  - @options.each do |option|
+    %li.grid__item
+      %div
+        = simple_form_for(option) do |f|
+          .row
+            .small-12.columns= f.error_notification
+          .row
+            .small-12.columns= f.input :value, hint: option.description, label: option.id.humanize
+          .row
+            .small-12.columns= f.button :submit
+

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :nodes, only: [:show, :index], constraints: { id: /[^\/]+/ }, format: false
+  resources :options, only: [:show, :index, :update]
   root to: 'visitors#index'
   match '/auth/:provider/callback', to: "sessions#create", via: [:get, :post]
   get '/signin' => 'sessions#new', :as => :signin

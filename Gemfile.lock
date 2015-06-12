@@ -1,6 +1,6 @@
 GIT
   remote: git@gitlab.fit.cvut.cz:jancidom/fitrender_frontend.git
-  revision: d736ffd99d6631f555e927066aea426909314e69
+  revision: 015c51c00079d8bec32ec6002997ef378d622baf
   branch: master
   specs:
     fitrender_common (0.1.0)

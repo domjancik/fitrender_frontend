@@ -17,6 +17,10 @@ module Adaptorable
     JSON.parse(response)
   end
 
+  def patch(resource, *params)
+    RestClient.patch resource_url(resource), *params
+  end
+
   protected
 
   def resource_url(resource)
