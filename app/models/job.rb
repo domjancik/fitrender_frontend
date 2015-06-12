@@ -15,7 +15,12 @@ class Job < ActiveRecord::Base
 
   def update_state
     return if state == 'completed' || state == 'failed'
-    job_info = get "jobs/#{id_remote}"
+    begin
+      job_info = get "jobs/#{id_remote}"
+    rescue RestClient::InternalServerError
+      return
+    end
+
     self.state = job_info['state']
 
     # TODO copy result to public dir when state becomes completed

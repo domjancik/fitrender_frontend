@@ -119,3 +119,7 @@ h2, h3, h4, h5, h6 {
   top: rem-calc(80);
   @include box-shadow-basic;
 }
+
+.button {
+  width: 100%;
+}
