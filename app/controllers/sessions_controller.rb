@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    redirect_to '/auth/developer'
+    redirect_to '/auth/fitcvut_oauth2'
   end
 
   def create
