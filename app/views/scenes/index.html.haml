@@ -8,9 +8,10 @@
       -# TODO show user for admin
       -#%th User
       %th{width: 300}
-      -#%th
-      -#%th
-      -#%th
+      - if user_is_admin?
+        %th
+        -#%th
+        -#%th
 
   %tbody
     - @scenes.each do |scene|
@@ -26,9 +27,10 @@
             - extra_classes = completed_percent == 100 ? 'success' : ''
             .progress{class: extra_classes}
               %span.meter{style: "width: #{completed_percent}%"}
-          -#%td= link_to 'Show', scene
-          -#%td= link_to 'Edit', edit_scene_path(scene)
-          -#%td= link_to 'Destroy', scene, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          - if user_is_admin?
+            %td= link_to 'Destroy', scene, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            -#%td= link_to 'Show', scene
+            -#%td= link_to 'Edit', edit_scene_path(scene)
 
 %br
 
