@@ -1,15 +1,15 @@
 %h1 Listing scenes
 
 %table{width: '100%'}
-  %thead
+  %thead{style: 'visibility: collapse;'}
     %tr
-      %th{width: 70}
+      %th{width: 70} Preview
       %th Title
       -# TODO show user for admin
       -#%th User
-      %th{width: 300}
+      %th{width: 300} Progress
       - if user_is_admin?
-        %th
+        %th{width: 100} Actions
         -#%th
         -#%th
 
