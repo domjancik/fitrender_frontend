@@ -1,4 +1,5 @@
 class OptionsController < ApplicationController
+  before_filter :authenticate_admin!
   before_action :set_option, only: [:show, :edit, :update]
 
   # GET /scenes

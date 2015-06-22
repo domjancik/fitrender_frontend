@@ -1,4 +1,6 @@
 class NodesController < ApplicationController
+  before_filter :authenticate_admin!
+
   before_action :set_node, only: [:show]
 
   # GET /nodes

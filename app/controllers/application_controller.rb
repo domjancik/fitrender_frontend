@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :user_signed_in?
   helper_method :correct_user?
+  helper_method :user_is_admin?
 
   # FIXME without this a ActionController::InvalidAuthenticityToken is thrown at login, investigate
   skip_before_filter :verify_authenticity_token
@@ -23,6 +24,11 @@ class ApplicationController < ActionController::Base
       return true if current_user
     end
 
+    def user_is_admin?
+      authenticate_user!
+      current_user.admin?
+    end
+
     def correct_user?
       @user = User.find(params[:id])
       unless current_user == @user
@@ -33,6 +39,12 @@ class ApplicationController < ActionController::Base
     def authenticate_user!
       if !current_user
         redirect_to root_url, :alert => 'You need to sign in for access to this page.'
+      end
+    end
+
+    def authenticate_admin!
+      if !user_is_admin?
+        redirect_to root_url, :alert => 'You are not authorized to access this page.'
       end
     end
 
