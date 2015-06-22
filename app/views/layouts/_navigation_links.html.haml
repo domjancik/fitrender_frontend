@@ -1,13 +1,6 @@
 =# add navigation links to this file
 - if user_signed_in?
-  %li= link_to 'Sign out', signout_path
   %li= link_to 'Scenes', scenes_path
   - if user_is_admin?
     %li= link_to 'Nodes', nodes_path
     %li= link_to 'Backend Options', options_path
-
-- else
-  %li= link_to 'Sign in', signin_path
-  - unless Rails.env.production?
-    %li= link_to 'Sign in DEVELOPER', signin_path(developer: true)
-

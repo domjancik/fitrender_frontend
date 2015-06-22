@@ -23,9 +23,9 @@ class Renderer < Fitrender::Adaptor::Renderer
   def self.all
     renderers = []
 
-    nodes_hash = get('renderers')
-    nodes_hash.each do |node_hash|
-      renderers << from_hash(node_hash)
+    renderers_hash = get('renderers')
+    renderers_hash.each do |renderer_hash|
+      renderers << from_hash(renderer_hash)
     end
 
     renderers

@@ -12,12 +12,17 @@
     .top-bar-section
       %ul
         = render 'layouts/navigation_links'
-      - if user_signed_in?
-        %ul.right
+      %ul.right
+        - if user_signed_in?
           %li
             = link_to 'New Scene', new_scene_path
           %li
             = link_to '' do
               =current_user.name
               =" (ID: #{current_user.id}, R: #{current_user.role})"
+          %li= link_to 'Sign out', signout_path
+        - else
+          %li= link_to 'Sign in', signin_path
+          - unless Rails.env.production?
+            %li= link_to 'Sign in DEVELOPER', signin_path(developer: true)
 
