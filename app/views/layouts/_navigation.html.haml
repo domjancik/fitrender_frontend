@@ -4,7 +4,8 @@
   %nav.top-bar{"data-topbar" => true}
     %ul.title-area
       %li.name
-        = link_to 'Home', root_path
+        = link_to root_path do
+          = image_tag 'fitrender_logo.png', class: 'logo'
       %li.toggle-topbar.menu-icon
         %a{:href => "#"}
           Menu

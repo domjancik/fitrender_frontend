@@ -1,3 +1,5 @@
+@import "settings";
+
 body {
   //background-color: #fff;
   //color: #333;
@@ -24,8 +26,8 @@ a {
     color: #666;
   }
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: $primary-color;
+    //background-color: #000;
   }
 }
 
