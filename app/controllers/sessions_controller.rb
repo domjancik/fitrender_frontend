@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
 
   def new
-    redirect_to '/auth/fitcvut_oauth2'
+    if not Rails.env.production? and params.has_key?('developer')
+      redirect_to '/auth/developer'
+    else
+      redirect_to '/auth/fitcvut_oauth2'
+    end
   end
 
   def create
