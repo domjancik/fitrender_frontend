@@ -1,0 +1,8 @@
+- content_for :title do
+  ="Options for #{@renderer.id}"
+
+%h1= yield :title
+
+= render 'form'
+
+= link_to 'Back', renderers_path

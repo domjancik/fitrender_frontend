@@ -9,6 +9,17 @@ class Renderer < Fitrender::Adaptor::Renderer
   include Modelable
   extend Adaptorable
 
+  # TODO join code with Scene or move functionality to Configurable
+  def method_missing(name, *args)
+    match = /^option_(\w+)$/.match name
+    return option_value(match[1]) if match
+
+    match = /^option_(\w+)=$/.match name
+    return option_set_value(match[1], args[0]) if match
+
+    super
+  end
+
   def self.all
     renderers = []
 
@@ -38,7 +49,33 @@ class Renderer < Fitrender::Adaptor::Renderer
     end
   end
 
+  def update(*args)
+    puts args.class
+    args.each do |arg|
+      arg.each do |key, value|
+        self.send("#{key}=", value)
+      end
+    end
+
+    self.save
+  end
+
+  def save
+    params = {}
+    options_list.each do |option|
+      params[option.id] = option.value
+    end
+
+    puts params
+
+    Renderer.patch "renderers/#{id}", params
+  end
+
   def to_s
     id
+  end
+
+  def to_key
+    return *self.id
   end
 end

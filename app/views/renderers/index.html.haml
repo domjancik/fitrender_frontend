@@ -1,0 +1,19 @@
+- content_for :title do
+  Renderer options
+
+%h1=yield(:title)
+
+%h2 Select a renderer
+
+%ul.small-block-grid-3.medium-block-grid-6
+  - @renderers.each do |renderer|
+    %li.grid__item
+      = link_to renderer do
+        .row
+          .small-4.columns
+            .row
+              = image_tag "icons/renderers/#{renderer.name}.png", class: %w(icon medium)
+          .small-8.columns.text-right
+            .row
+              = renderer.name
+

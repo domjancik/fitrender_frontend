@@ -1,0 +1,12 @@
+= simple_form_for(@renderer, :html => {:multipart => true }) do |f|
+  = f.error_notification
+
+  .form-inputs
+    %ul.small-block-grid-1.medium-block-grid-2.large-block-grid-3
+      - @renderer.options_list.each do |option|
+        %li.grid__item
+          - input_id = "option_#{option.id}".to_sym
+          = f.input input_id, hint: option.description, label: option.id.humanize
+
+  .form-actions
+    = f.button :submit

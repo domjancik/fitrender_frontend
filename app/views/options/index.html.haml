@@ -3,6 +3,8 @@
 
 %h1=yield(:title)
 
+%h2 Global
+
 %ul.small-block-grid-1.medium-block-grid-2.large-block-grid-3
   - @options.each do |option|
     %li.grid__item
@@ -15,3 +17,6 @@
           .row
             .small-12.columns= f.button :submit
 
+%h2 Renderer options
+
+=link_to 'List renderers', renderers_path
